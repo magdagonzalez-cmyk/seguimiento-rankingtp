@@ -1,0 +1,391 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main class="mi-informacion">
+
+    <section class="perfil-principal">
+
+        <div class="perfil-identidad">
+
+            <div class="avatar-grande">
+                {{ estudiante.nombre[:2]|upper }}
+            </div>
+
+            <div>
+
+                <span class="etiqueta-perfil">
+                    🔐 INFORMACIÓN PRIVADA
+                </span>
+
+                <h1>
+                    {{ estudiante.nombre }}
+                </h1>
+
+                <p>
+                    {{ estudiante.curso }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="perfil-decoracion">
+            🏆
+        </div>
+
+    </section>
+
+
+    <section class="resumen">
+
+        <div class="resumen-card ranking-card">
+
+            <span class="resumen-icono">🏆</span>
+
+            <div>
+                <span>MI POSICIÓN</span>
+
+                <strong>
+                    #{{ posicion }}
+                </strong>
+
+                <small>
+                    de {{ total_estudiantes }} estudiantes
+                </small>
+            </div>
+
+        </div>
+
+
+        <div class="resumen-card promedio-card">
+
+            <span class="resumen-icono">📊</span>
+
+            <div>
+                <span>MI PROMEDIO</span>
+
+                <strong>
+                    {{ "%.1f"|format(promedio)|replace(".", ",") }}
+                </strong>
+
+                <small>
+                    promedio general
+                </small>
+            </div>
+
+        </div>
+
+
+        <div class="resumen-card anotaciones-card">
+
+            <span class="resumen-icono">📝</span>
+
+            <div>
+                <span>ANOTACIONES</span>
+
+                <strong>
+                    {{ cantidad_anotaciones }}
+                </strong>
+
+                <small>
+                    registrada
+                </small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="informacion-card">
+
+        <div class="titulo-card">
+
+            <div>
+                <span>RENDIMIENTO</span>
+
+                <h2>
+                    Mis notas
+                </h2>
+            </div>
+
+            <span class="titulo-icono">
+                📚
+            </span>
+
+        </div>
+
+        <div class="notas-lista">
+
+            {% for nota in notas %}
+
+            <div class="nota-fila">
+
+                <span>
+                    {{ nota.asignatura }}
+                </span>
+
+                <strong>
+                    {{ "%.1f"|format(nota.nota)|replace(".", ",") }}
+                </strong>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <section class="anotacion-destacada">
+
+        <div class="anotacion-icono">
+            📝
+        </div>
+
+        <div>
+
+            <span>MI ANOTACIÓN</span>
+
+            <h2>
+                Registro académico
+            </h2>
+
+            <p>
+                {{ estudiante.anotacion or "No existen anotaciones registradas." }}
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="asistencia-seccion">
+
+        <div class="asistencia-titulo">
+
+            <div>
+
+                <span>ASISTENCIA</span>
+
+                <h2>
+                    Mi asistencia
+                </h2>
+
+                <p>
+                    Consulta tu asistencia durante todo el año.
+                    Los fines de semana y feriados no se contabilizan.
+                </p>
+
+            </div>
+
+            <div class="año">
+                {{ anio }}
+            </div>
+
+        </div>
+
+
+        <div class="leyenda">
+
+            <div>
+                <span class="punto verde"></span>
+                Presente
+            </div>
+
+            <div>
+                <span class="punto amarillo"></span>
+                Parcial
+            </div>
+
+            <div>
+                <span class="punto rojo"></span>
+                Ausente
+            </div>
+
+        </div>
+
+
+        {% for mes in meses %}
+
+        <input
+            type="radio"
+            name="mes"
+            id="mes-{{ mes.numero }}"
+            class="control-mes"
+            {% if loop.first %}checked{% endif %}
+        >
+
+        {% endfor %}
+
+
+        <div class="calendario">
+
+            <div class="calendario-ventana">
+
+                <div class="calendario-track">
+
+                    {% for mes in meses %}
+
+                    <section class="mes">
+
+                        <div class="mes-cabecera">
+
+                            <div>
+
+                                <span>
+                                    CALENDARIO DE ASISTENCIA
+                                </span>
+
+                                <h3>
+                                    {{ mes.nombre }}
+                                </h3>
+
+                            </div>
+
+                            <strong>
+                                {{ anio }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="dias-semana">
+
+                            {% for dia in dias_semana %}
+                            <div>
+                                {{ dia }}
+                            </div>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <div class="dias-grid">
+
+                            {% for dia in mes.dias %}
+
+                            <div
+                                class="dia-asistencia {{ dia.estado }}"
+                            >
+
+                                <strong>
+                                    {{ dia.numero }}
+                                </strong>
+
+                                <span class="estado-icono">
+                                    {% if dia.estado == "presente" %}
+                                        🟢
+                                    {% elif dia.estado == "parcial" %}
+                                        🟡
+                                    {% else %}
+                                        🔴
+                                    {% endif %}
+                                </span>
+
+                                <span class="estado-texto">
+                                    {% if dia.estado == "presente" %}
+                                        Presente
+                                    {% elif dia.estado == "parcial" %}
+                                        Parcial
+                                    {% else %}
+                                        Ausente
+                                    {% endif %}
+                                </span>
+
+                            </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </section>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <div class="flechas">
+
+                {% for mes in meses %}
+
+                {% if mes.numero == 1 %}
+                    {% set anterior = 12 %}
+                {% else %}
+                    {% set anterior = mes.numero - 1 %}
+                {% endif %}
+
+                {% if mes.numero == 12 %}
+                    {% set siguiente = 1 %}
+                {% else %}
+                    {% set siguiente = mes.numero + 1 %}
+                {% endif %}
+
+                <div
+                    class="
+                        controles-mes
+                        controles-mes-{{ mes.numero }}
+                    "
+                >
+
+                    <label
+                        for="mes-{{ anterior }}"
+                        class="flecha flecha-izquierda"
+                        aria-label="Mes anterior"
+                    >
+                        ←
+                    </label>
+
+                    <span>
+                        {{ mes.nombre }}
+                    </span>
+
+                    <label
+                        for="mes-{{ siguiente }}"
+                        class="flecha flecha-derecha"
+                        aria-label="Mes siguiente"
+                    >
+                        →
+                    </label>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <div class="aviso-asistencia">
+
+            <span>
+                💡
+            </span>
+
+            <p>
+
+                <strong>
+                    ¿Qué significa cada color?
+                </strong>
+
+                El color verde indica que estuviste presente en
+                todas las clases registradas. El amarillo significa
+                que hubo asistencia parcial o que algún profesor
+                no registró la lista completa. El rojo indica
+                ausencia.
+
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+{% endblock %}

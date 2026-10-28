@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main class="pagina-ranking">
+
+    <section class="ranking-hero">
+
+        <div class="ranking-hero-contenido">
+
+            <span class="etiqueta-ranking">
+                🏆 RANKING TP
+            </span>
+
+            <h1>
+                Ranking de estudiantes
+            </h1>
+
+            <p>
+                Consulta la posición de los estudiantes de cada curso.
+                Solo se muestra el nombre y la posición en el ranking.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="rankings">
+
+        {% for nombre_curso, estudiantes in [
+            ("3° Medio TP", ranking_3),
+            ("4° Medio TP", ranking_4)
+        ] %}
+
+        <div class="ranking-curso">
+
+            <div class="titulo-curso">
+
+                <div>
+                    <span class="curso-etiqueta">
+                        CURSO
+                    </span>
+
+                    <h2>
+                        {{ nombre_curso }}
+                    </h2>
+                </div>
+
+                <span class="icono-curso">
+                    🎓
+                </span>
+
+            </div>
+
+            <div class="tabla-contenedor">
+
+                <table class="tabla-ranking">
+
+                    <thead>
+                        <tr>
+                            <th>Posición</th>
+                            <th>Estudiante</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for estudiante in estudiantes %}
+
+                        <tr class="
+                            {% if estudiante.posicion == 1 %}
+                                primer-lugar
+                            {% elif estudiante.posicion == 2 %}
+                                segundo-lugar
+                            {% elif estudiante.posicion == 3 %}
+                                tercer-lugar
+                            {% endif %}
+                        ">
+
+                            <td>
+                                {% if estudiante.posicion == 1 %}
+                                    <span class="medalla">🥇</span>
+                                {% elif estudiante.posicion == 2 %}
+                                    <span class="medalla">🥈</span>
+                                {% elif estudiante.posicion == 3 %}
+                                    <span class="medalla">🥉</span>
+                                {% endif %}
+
+                                <strong>
+                                    {{ estudiante.posicion }}
+                                </strong>
+                            </td>
+
+                            <td>
+                                {{ estudiante.nombre }}
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </section>
+
+    <section class="aviso-ranking">
+
+        <div class="aviso-icono">
+            🔒
+        </div>
+
+        <div>
+            <h3>
+                Información protegida
+            </h3>
+
+            <p>
+                En esta sección solo se muestra el nombre del estudiante
+                y su posición en el ranking. Las notas, asistencia,
+                anotaciones y demás información personal son privadas.
+            </p>
+        </div>
+
+    </section>
+
+</main>
+
+{% endblock %}

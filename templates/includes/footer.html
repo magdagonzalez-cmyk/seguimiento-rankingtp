@@ -1,0 +1,50 @@
+<footer class="footer">
+
+    <div class="contenedor footer-contenido">
+
+        <div>
+            <a href="{{ url_for('main.index') }}" class="logo footer-logo">
+                <span>TP</span>
+                Ranking
+            </a>
+
+            <p>
+                Sistema de seguimiento académico
+                para estudiantes de enseñanza media TP.
+            </p>
+        </div>
+
+        <div class="footer-enlaces">
+            <strong>Navegación</strong>
+
+            <a href="{{ url_for('main.index') }}">
+                Inicio
+            </a>
+
+            {% if usuario %}
+            <a href="{{ url_for('main.ranking') }}">
+                Ranking
+            </a>
+
+            <a href="{{ url_for('main.asignaturas') }}">
+                Asignaturas
+            </a>
+            {% endif %}
+        </div>
+
+        <div class="footer-enlaces">
+            <strong>Cursos</strong>
+
+            <span>3.º Medio TP</span>
+            <span>4.º Medio TP</span>
+        </div>
+
+    </div>
+
+    <div class="footer-final footer-bottom">
+        <p>
+            © 2026 Ranking TP · Proyecto académico
+        </p>
+    </div>
+
+</footer>

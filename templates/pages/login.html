@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="login-pagina">
+
+    <section class="login-contenedor">
+
+        <div class="login-presentacion">
+
+            <div class="login-logo">
+                🏆
+            </div>
+
+            <span class="login-etiqueta">
+                TP RANKING
+            </span>
+
+            <h1>
+                Bienvenido
+            </h1>
+
+            <p>
+                Ingresa con tus datos de estudiante para acceder
+                a tu información académica y al ranking.
+            </p>
+
+            <div class="login-info">
+
+                <div>
+                    🔒
+                    <span>Acceso protegido</span>
+                </div>
+
+                <div>
+                    👨‍🎓
+                    <span>Información del estudiante</span>
+                </div>
+
+                <div>
+                    🏆
+                    <span>Ranking TP</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="login-formulario">
+
+            <div class="login-titulo">
+                <span>ACCESO ESTUDIANTE</span>
+
+                <h2>Iniciar sesión</h2>
+
+                <p>
+                    Ingresa tu RUT y contraseña para continuar.
+                </p>
+            </div>
+
+            {% if error %}
+            <div class="login-error">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <form
+                action="{{ url_for('main.api_login') }}"
+                method="POST"
+                class="form-login"
+            >
+
+                <div class="campo-login">
+
+                    <label for="rut">
+                        RUT
+                    </label>
+
+                    <input
+                        type="text"
+                        id="rut"
+                        name="rut"
+                        placeholder="Ej: 12.345.678-9"
+                        autocomplete="username"
+                        value="{{ rut|default('') }}"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-login">
+
+                    <label for="password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Ingresa tu contraseña"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="boton-login"
+                >
+                    Iniciar sesión
+                    <span>→</span>
+                </button>
+
+            </form>
+
+            <div class="login-aviso">
+
+                <span>🔐</span>
+
+                <p>
+                    Tus credenciales son personales.
+                    No compartas tu contraseña con otras personas.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+{% endblock %}

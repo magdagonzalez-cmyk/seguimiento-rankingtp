@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-contenido">
+
+        <span class="etiqueta">
+            🏆 TP RANKING
+        </span>
+
+        <h1>
+            Sistema de Ranking
+            <br>
+            Estudiantes TP
+        </h1>
+
+        <p>
+            Consulta el ranking de los estudiantes de
+            3.º y 4.º Medio TP y accede a tu información
+            académica personal.
+        </p>
+
+        <div class="hero-botones">
+
+            <a
+                href="{{ url_for('main.ranking') }}"
+                class="boton"
+            >
+                Ver ranking
+            </a>
+
+            <a
+                href="{{ url_for('main.mi_informacion') }}"
+                class="boton boton-secundario"
+            >
+                Mi información
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

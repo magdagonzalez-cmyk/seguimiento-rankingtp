@@ -1,0 +1,76 @@
+
+<header class="header">
+    <div class="header-contenido">
+
+        <a href="{{ url_for('main.rankingtp') if usuario else url_for('main.index') }}"
+           class="logo">
+
+            <img
+                src="{{ url_for('static', filename='images/Logo-40-anos-azul.png') }}"
+                alt="Logo Colegio San Lorenzo"
+            >
+
+            <div class="logo-texto">
+                <strong>TPRanking</strong>
+                <span>Colegio San Lorenzo</span>
+            </div>
+
+        </a>
+
+        {% if usuario %}
+        <nav class="navegacion">
+
+            <a href="{{ url_for('main.rankingtp') }}">
+                Inicio
+            </a>
+
+            <a href="{{ url_for('main.ranking') }}">
+                Ranking
+            </a>
+
+            <a href="{{ url_for('main.asignaturas') }}">
+                Asignaturas
+            </a>
+
+            <a href="{{ url_for('main.nosotros') }}">
+                Nosotros
+            </a>
+
+            <a
+                href="{{ url_for('main.mi_informacion') }}"
+                class="boton-mi-informacion"
+            >
+                🔒 Mi información.
+            </a>
+
+            <div class="usuario-conectado">
+
+                <span class="usuario-icono">
+                    👤
+                </span>
+
+                <div class="usuario-datos">
+                    <strong>{{ usuario.nombre }}</strong>
+                    <small>{{ usuario.curso }}</small>
+                </div>
+
+            </div>
+
+            <form
+                action="{{ url_for('main.api_logout') }}"
+                method="POST"
+                class="form-cerrar-sesion"
+            >
+                <button
+                    type="submit"
+                    class="boton-cerrar-sesion"
+                >
+                    ↪ Cerrar sesión
+                </button>
+            </form>
+
+        </nav>
+        {% endif %}
+
+    </div>
+</header>
