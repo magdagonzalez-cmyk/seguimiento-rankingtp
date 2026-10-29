@@ -3644,3 +3644,484 @@ main {
         font-size: 14px;
     }
 }
+
+/* =========================================================
+   DISEÑO RESPONSIVE - CELULARES Y TABLETS
+   ========================================================= */
+
+/* TABLETS */
+@media (max-width: 900px) {
+
+    .contenedor {
+        width: min(92%, 1100px);
+    }
+
+    .header-contenido {
+        padding: 14px 0;
+    }
+
+    .navegacion {
+        gap: 10px;
+    }
+
+    .navegacion a {
+        font-size: 14px;
+    }
+
+    .usuario-conectado {
+        display: none;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 90px 0 70px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .resumen {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rejilla {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+
+    /* CONTENEDOR */
+
+    .contenedor {
+        width: 90%;
+        max-width: 100%;
+    }
+
+
+    /* HEADER */
+
+    .header {
+        position: relative;
+    }
+
+    .header-contenido {
+        width: 90%;
+        padding: 14px 0;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .navegacion {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .navegacion a {
+        font-size: 13px;
+        padding: 7px 10px;
+    }
+
+    .boton-mi-informacion {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-cerrar-sesion {
+        width: 100%;
+    }
+
+    .boton-cerrar-sesion {
+        width: 100%;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding: 60px 0 50px;
+        text-align: center;
+    }
+
+    .hero-contenido {
+        width: 90%;
+        margin: auto;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+        line-height: 1.1;
+    }
+
+    .hero p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .hero-botones {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .hero-botones .boton {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* TÍTULOS */
+
+    .pagina h1,
+    .pagina-ranking h1 {
+        font-size: 32px;
+        line-height: 1.15;
+    }
+
+    .texto-intro {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+
+    /* TARJETAS */
+
+    .rejilla {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .tarjeta,
+    .tarjeta-taller {
+        padding: 22px;
+    }
+
+
+    /* RANKING */
+
+    .rankings {
+        gap: 25px;
+    }
+
+    .ranking-curso {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .titulo-curso {
+        padding: 18px;
+    }
+
+    .titulo-curso h2 {
+        font-size: 23px;
+    }
+
+    .tabla-contenedor {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .tabla-ranking {
+        min-width: 100%;
+        font-size: 14px;
+    }
+
+    .tabla-ranking th,
+    .tabla-ranking td {
+        padding: 13px 10px;
+    }
+
+    .aviso-ranking {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+
+    /* LOGIN */
+
+    .login-pagina {
+        padding: 35px 15px;
+    }
+
+    .login-contenedor {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login-presentacion,
+    .login-formulario {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 28px 22px;
+    }
+
+    .login-presentacion h1 {
+        font-size: 32px;
+    }
+
+    .login-formulario h2 {
+        font-size: 27px;
+    }
+
+    .form-login input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .boton-login {
+        width: 100%;
+    }
+
+
+    /* MI INFORMACIÓN */
+
+    .mi-informacion {
+        width: 90%;
+        margin: auto;
+    }
+
+    .perfil-principal {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 25px;
+    }
+
+    .perfil-identidad {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .perfil-identidad h1 {
+        font-size: 28px;
+    }
+
+    .avatar-grande {
+        width: 65px;
+        height: 65px;
+    }
+
+
+    /* RESUMEN */
+
+    .resumen {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .resumen-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* NOTAS */
+
+    .informacion-card {
+        padding: 22px;
+    }
+
+    .titulo-card {
+        gap: 10px;
+    }
+
+    .titulo-card h2 {
+        font-size: 25px;
+    }
+
+    .nota-fila {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 15px 0;
+    }
+
+    .nota-fila strong {
+        font-size: 22px;
+    }
+
+
+    /* ANOTACIONES */
+
+    .anotacion-destacada {
+        flex-direction: column;
+        padding: 22px;
+        gap: 15px;
+    }
+
+
+    /* ASISTENCIA */
+
+    .asistencia-seccion {
+        padding: 20px;
+        overflow: hidden;
+    }
+
+    .asistencia-titulo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .asistencia-titulo h2 {
+        font-size: 27px;
+    }
+
+    .año {
+        align-self: flex-start;
+    }
+
+    .leyenda {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+
+    /* CALENDARIO */
+
+    .calendario {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .calendario-ventana {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .mes {
+        min-width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .mes-cabecera {
+        padding: 15px 10px;
+    }
+
+    .mes-cabecera h3 {
+        font-size: 25px;
+    }
+
+    .dias-semana {
+        gap: 4px;
+    }
+
+    .dias-semana div {
+        font-size: 9px;
+        text-align: center;
+    }
+
+    .dias-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
+    }
+
+    .dia-asistencia {
+        min-height: 55px;
+        padding: 6px 3px;
+        border-radius: 10px;
+    }
+
+    .dia-asistencia strong {
+        font-size: 15px;
+    }
+
+    .estado-icono {
+        font-size: 12px;
+    }
+
+    .estado-texto {
+        font-size: 8px;
+    }
+
+    .flechas {
+        width: 100%;
+    }
+
+    .controles-mes {
+        gap: 12px;
+    }
+
+    .flecha {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+
+    /* FOOTER */
+
+    .footer-contenido {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .footer-enlaces {
+        align-items: center;
+    }
+
+    .footer-final {
+        text-align: center;
+        padding: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES MUY PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .pagina h1,
+    .pagina-ranking h1 {
+        font-size: 28px;
+    }
+
+    .navegacion a {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .dia-asistencia {
+        min-height: 48px;
+    }
+
+    .estado-texto {
+        display: none;
+    }
+
+}
