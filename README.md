@@ -41,6 +41,12 @@ python -m pip install -r requirements.txt
 python app.py
 ```
 
+Para despliegues con Gunicorn, usa:
+
+```bash
+gunicorn main:app
+```
+
 Luego abre:
 
 ```text
